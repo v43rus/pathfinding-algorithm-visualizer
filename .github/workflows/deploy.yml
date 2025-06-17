@@ -1,9 +1,12 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - master
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -20,10 +23,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
+      - name: Build and move to docs
+        run: npm run build && rm -rf docs && mv build docs
 
-      - name: Deploy
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push docs
+        run: |
+          git config --global user.email "leonard.jm@live.com"
+          git config --global user.name "v43rus"
+          git add docs
+          git commit -m "Deploy to GitHub Pages" || echo "No changes to commit"
+          git push
