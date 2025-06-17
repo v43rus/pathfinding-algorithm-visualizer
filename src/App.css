@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+main {
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.maze-grid {
+  background-color: #DFDBE5;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  width: 100vw;
+}
+
+.maze {
+  border: 3px solid #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.maze-button {
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s
 }
 
-.App-link {
-  color: #61dafb;
+.maze-button:hover {
+  background-color: #0056b3;
+  transition: 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.maze-button:disabled {
+  outline: 2px solid #007bff;
+  background-color: #cccccc;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #666;
+}
+
+.cell.visited {
+  background-color: lightblue;
+}
+
+.cell.wall {
+  background-color: black;
+}
+
+.cell.path {
+  background-color: #DFDBE5;
+}
+
+.cell.start {
+  background-color: green;
+}
+
+.cell.end {
+  background-color: red;
+}
+
+.cell.path-found {
+  background-color: lightgreen;
 }
