@@ -78,7 +78,7 @@ function MazeGrid() {
         return true;
       }
       markVisited(x, y);
-      await delay(50);
+      await delay(100);
       return false;
     }
 
@@ -143,7 +143,7 @@ function MazeGrid() {
         return true;
       }
       markVisited(x, y);
-      await delay(50);
+      await delay(100);
       return false;
     }
 
